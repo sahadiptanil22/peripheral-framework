@@ -1,0 +1,32 @@
+/*
+ * settings.gradle
+ * Android Peripheral Framework
+ *
+ * Copyright (C) 2022 Current Health. All rights reserved.
+ */
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        mavenLocal()
+
+        maven {
+            url "https://nexus.snap40.com/repository/maven-public/"
+            credentials {
+                username System.getenv('nexus_username') ?: "$nexus_username"
+                password System.getenv('nexus_password') ?: "$nexus_password"
+            }
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "PeripheralFramework"
+include ':peripheralframework'
